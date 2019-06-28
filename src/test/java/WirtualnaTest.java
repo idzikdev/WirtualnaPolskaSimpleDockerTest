@@ -29,10 +29,10 @@ public class WirtualnaTest {
 
     @Test
     public void is_Login_Fail(){
-        DesiredCapabilities desiredCapabilities=DesiredCapabilities.firefox();
+        DesiredCapabilities desiredCapabilities=DesiredCapabilities.chrome();
         URL url=null;
         try {
-            url=new URL("http://localhost/wd/hub"); //docker grid
+            url=new URL("http://localhost:4444/wd/hub"); //docker grid
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -40,7 +40,7 @@ public class WirtualnaTest {
             webDriver=new RemoteWebDriver(url,desiredCapabilities);
             webDriver.get(urlGet);
             webDriver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
-            webDriver.manage().window().maximize();
+            //webDriver.manage().window().maximize();
             WebElement loginField=webDriver.findElement(By.name("login_username"));
             loginField.clear();
             loginField.sendKeys(login);
